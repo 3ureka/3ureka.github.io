@@ -4,6 +4,597 @@
   
   
   <entry>
+    <title>LeetCode-LCP-68.美观的花束</title>
+    <link href="/2025/04/09/LeetCode-LCP-68/"/>
+    <url>/2025/04/09/LeetCode-LCP-68/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/1GxJYY/description/">LCP 68. 美观的花束</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">const</span> <span class="hljs-type">static</span> <span class="hljs-type">int</span> MOD = <span class="hljs-number">1000000007</span>;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">beautifulBouquet</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; flowers, <span class="hljs-type">int</span> cnt)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; flowers.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[flowers[right]] ++;<br>            <span class="hljs-keyword">while</span> (map[flowers[right]] &gt; cnt) &#123;<br>                map[flowers[left]] --;<br>                <span class="hljs-keyword">if</span> (map[flowers[left]] == <span class="hljs-number">0</span>) &#123;<br>                    map.<span class="hljs-built_in">erase</span>(flowers[left]);<br>                &#125;<br>                left ++;<br>            &#125;<br>            ans = (ans + right - left + <span class="hljs-number">1</span>) % MOD ;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans % MOD;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-2302.统计得分小于 K 的子数组数目</title>
+    <link href="/2025/04/09/LeetCode-2302/"/>
+    <url>/2025/04/09/LeetCode-2302/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/count-subarrays-with-score-less-than-k/submissions/620541357/">2302. 统计得分小于 K 的子数组数目</a></p><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>这里<code>for</code>循环遍历时，永远是按照以<code>right</code>为右端点时，可得到的子数组数量大小<br><code>while(sum*len &gt;= k)</code>代码块结束后<br><code>ans += (right - left + 1)</code>是代表<code>[left, right]</code>这个区间内<br>以<code>right</code>为右端点，<code>left</code>为左端点的数组里求 满足条件的子数组<br>由于此时<code>[left, right]*(right - left + 1) &lt; k</code>,即<code>[left, right]</code>的区间满足<br>那么<code>[left + 1, right], [left + 2, right] ... [right, right]</code>也一定满足<br>这个长度就是<code>right - left + 1</code></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">countSubarrays</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">long</span> <span class="hljs-type">long</span> k)</span> </span>&#123;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> len = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += nums[right];<br>            len = right - left + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">while</span> (sum * len &gt;= k) &#123;<br>                sum -= nums[left];<br>                left ++;<br>                len --;<br>            &#125;<br>            ans += (right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-3258.统计满足 K 约束的子字符串数量 I</title>
+    <link href="/2025/04/09/LeetCode-3258/"/>
+    <url>/2025/04/09/LeetCode-3258/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/count-substrings-that-satisfy-k-constraint-i/description/">3258. 统计满足 K 约束的子字符串数量 I</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countKConstraintSubstrings</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, ans = <span class="hljs-number">0</span>;<br>        vector&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">vt</span>(<span class="hljs-number">2</span>);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            vt[s[right] - <span class="hljs-string">&#x27;0&#x27;</span>] ++;<br>            <span class="hljs-keyword">while</span> (vt[<span class="hljs-number">0</span>] &gt; k &amp;&amp; vt[<span class="hljs-number">1</span>] &gt; k) &#123;<br>                vt[s[left] - <span class="hljs-string">&#x27;0&#x27;</span>] --;<br>                left ++;<br>            &#125;<br>            ans += (right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-713.乘积小于 K 的子数组</title>
+    <link href="/2025/04/09/LeetCode-713/"/>
+    <url>/2025/04/09/LeetCode-713/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/subarray-product-less-than-k/description/">713. 乘积小于 K 的子数组</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numSubarrayProductLessThanK</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> sum = <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum *= nums[right];<br>            <span class="hljs-keyword">while</span> (sum &gt;= k &amp;&amp; left &lt;= right) &#123;<br>                sum /= nums[left];<br>                left ++;<br>            &#125;<br>            ans += (right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-2799.统计完全子数组的数目</title>
+    <link href="/2025/04/09/LeetCode-2799/"/>
+    <url>/2025/04/09/LeetCode-2799/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/count-complete-subarrays-in-an-array/description/">2799. 统计完全子数组的数目</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countCompleteSubarrays</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        set&lt;<span class="hljs-type">int</span>&gt;st;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i : nums) &#123;<br>            st.<span class="hljs-built_in">insert</span>(i);<br>        &#125;<br>        <span class="hljs-type">int</span> k = st.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, ans = <span class="hljs-number">0</span>;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; map;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[nums[right]] ++;<br>            <span class="hljs-keyword">while</span> (map.<span class="hljs-built_in">size</span>() == k) &#123;<br>                map[nums[left]] --;<br>                <span class="hljs-keyword">if</span> (map[nums[left]] == <span class="hljs-number">0</span>) &#123;<br>                    map.<span class="hljs-built_in">erase</span>(nums[left]);<br>                &#125;<br>                left ++;<br>            &#125;<br>            ans += left;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-3325.字符至少出现 K 次的子字符串 I</title>
+    <link href="/2025/04/09/LeetCode-3325/"/>
+    <url>/2025/04/09/LeetCode-3325/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/count-substrings-with-k-frequency-characters-i/description/">3325. 字符至少出现 K 次的子字符串 I</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numberOfSubstrings</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[s[right] - <span class="hljs-string">&#x27;a&#x27;</span>] ++;<br>            <span class="hljs-keyword">while</span> (map[s[right] - <span class="hljs-string">&#x27;a&#x27;</span>] &gt;= k) &#123;<br>                map[s[left] - <span class="hljs-string">&#x27;a&#x27;</span>] --;<br>                left ++;<br>            &#125;<br>            ans += left;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-2962.统计最大元素出现至少 K 次的子数组</title>
+    <link href="/2025/04/09/LeetCode-2962/"/>
+    <url>/2025/04/09/LeetCode-2962/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/description/">2962. 统计最大元素出现至少 K 次的子数组</a></p><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p><code>cnt</code>记录<code>[left,right]</code>中出现<code>maxv</code>的次数<br>当<code>cnt == k</code>时候,让<code>left</code>向右走<br>直到<code>[left + x, right]</code>中的<code>cnt &lt; k</code>。<br>而此时将左端点作为 <code>0...left + x - 1</code>都会使得<code>[左端点, right]</code>这个区间的<code>cnt == k</code><br><code>left + x - 1</code> 距离<code>0点</code>的长度是 <code>left + x - 1 + 1 = left + x</code><br>即可以使用<code>ans += left</code> 来计算合理方案</p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">countSubarrays</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i : nums) &#123;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, i);<br>        &#125;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            cnt += nums[right] == maxv;<br>            <span class="hljs-keyword">while</span> (cnt &gt;= k) &#123;<br>                cnt -= nums[left] == maxv;<br>                left ++;<br>            &#125;<br>            ans += left;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-1358.包含所有三种字符的子字符串数目</title>
+    <link href="/2025/04/09/LeetCode-1358/"/>
+    <url>/2025/04/09/LeetCode-1358/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/number-of-substrings-containing-all-three-characters/description/">1358. 包含所有三种字符的子字符串数目</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numberOfSubstrings</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[s[right] - <span class="hljs-string">&#x27;a&#x27;</span>] ++;<br>            <span class="hljs-keyword">while</span> (map[<span class="hljs-number">0</span>] &gt; <span class="hljs-number">0</span> &amp;&amp; map[<span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> &amp;&amp; map[<span class="hljs-number">2</span>] &gt; <span class="hljs-number">0</span>) &#123;<br>                map[s[left] - <span class="hljs-string">&#x27;a&#x27;</span>] --;<br>                left ++;<br>            &#125;<br>            <span class="hljs-comment">// 例如abcabc 当走到第一个c时 =&gt; abc</span><br>            <span class="hljs-comment">// abc =&gt; bc 此时left = 1, ans += left</span><br>            <span class="hljs-comment">// 移动left，[left, right]组成的滑动窗口恰好使得条件不成立</span><br>            <span class="hljs-comment">// 而以right为右端点，滑动窗口外的值(即当 left &lt; 滑动窗口left 时所有数据都是符合条件的)</span><br>            ans += left;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-2904.最短且字典序最小的美丽子字符串</title>
+    <link href="/2025/04/09/LeetCode-2904/"/>
+    <url>/2025/04/09/LeetCode-2904/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/shortest-and-lexicographically-smallest-beautiful-string/description/">2904. 最短且字典序最小的美丽子字符串</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 去除前导0</span><br>    <span class="hljs-function">string <span class="hljs-title">deletePrefixZero</span> <span class="hljs-params">(string str)</span> </span>&#123;<br>        <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (i &lt; str.<span class="hljs-built_in">size</span>() &amp;&amp; str[i] == <span class="hljs-string">&#x27;0&#x27;</span>) &#123;<br>            i++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> str.<span class="hljs-built_in">substr</span>(i);<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">shortestBeautifulSubstring</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, cnt = <span class="hljs-number">0</span>;<br>        string ans = <span class="hljs-string">&quot;&quot;</span>, tmp = <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            cnt += s[right] == <span class="hljs-string">&#x27;1&#x27;</span>;<br>            <span class="hljs-keyword">while</span> (cnt &gt; k || s[left] == <span class="hljs-string">&#x27;0&#x27;</span>) &#123;<br>                cnt -= s[left] == <span class="hljs-string">&#x27;1&#x27;</span>;<br>                left ++;<br>            &#125;<br><br>            <span class="hljs-keyword">if</span> (cnt == k) &#123;<br>                tmp = s.<span class="hljs-built_in">substr</span>(left, right - left + <span class="hljs-number">1</span>);<br>                tmp = <span class="hljs-built_in">deletePrefixZero</span>(tmp);<br>                <span class="hljs-comment">// int k = a.compare(b)</span><br>                <span class="hljs-comment">// 如果 k==1,则a&gt;b; k==0,则a=b; k==-1,则a&lt;b</span><br>                <span class="hljs-keyword">if</span> (ans.<span class="hljs-built_in">size</span>() == <span class="hljs-number">0</span> || ans.<span class="hljs-built_in">size</span>() &gt; tmp.<span class="hljs-built_in">size</span>() || (ans.<span class="hljs-built_in">size</span>() == tmp.<span class="hljs-built_in">size</span>() &amp;&amp; ans.<span class="hljs-built_in">compare</span>(tmp) &gt; <span class="hljs-number">0</span>)) &#123;<br>                    ans = tmp;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-209.长度最小的子数组</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-209/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-209/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/minimum-size-subarray-sum/description/">209. 长度最小的子数组</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minSubArrayLen</span><span class="hljs-params">(<span class="hljs-type">int</span> target, vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>, minv = INT32_MAX;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += nums[right];<br>            <span class="hljs-keyword">while</span> (sum &gt;= target) &#123;<br>                minv = <span class="hljs-built_in">min</span>(minv, right - left + <span class="hljs-number">1</span>);<br>                sum -= nums[left];<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> minv == INT32_MAX ? <span class="hljs-number">0</span> : minv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-2730.找到最长的半重复子字符串</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-2730/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-2730/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/find-the-longest-semi-repetitive-substring/description/">2730. 找到最长的半重复子字符串</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">longestSemiRepetitiveSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">1</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            <span class="hljs-keyword">if</span> (s[right] == s[right - <span class="hljs-number">1</span>]) &#123;<br>                cnt ++;<br>            &#125;<br>            <span class="hljs-keyword">while</span> (cnt &gt; <span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-keyword">if</span> (s[left] == s[left + <span class="hljs-number">1</span>]) &#123;<br>                    cnt --;<br>                &#125;<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv == INT32_MIN ? <span class="hljs-number">1</span> : maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-1658.将 x 减到 0 的最小操作数</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-1658/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-1658/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/description/">1658. 将 x 减到 0 的最小操作数</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minOperations</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> x)</span> </span>&#123;<br>        <span class="hljs-type">int</span> allSum = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i ++) &#123;<br>            allSum += nums[i];<br>        &#125;<br>        <span class="hljs-keyword">if</span> (allSum &lt; x) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 求最长的滑动窗口使得滑动窗口总值 == targetVal</span><br>        <span class="hljs-type">int</span> targetVal = allSum - x;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>, maxv = <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; n; right ++) &#123;<br>            sum += nums[right];<br>            <span class="hljs-keyword">while</span> (sum &gt; targetVal) &#123;<br>                sum -= nums[left];<br>                left ++;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (sum == targetVal) &#123;<br>                maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (maxv == <span class="hljs-number">-1</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> n - maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-1004.最大连续1的个数 III</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-1004/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-1004/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/max-consecutive-ones-iii/description/">1004. 最大连续1的个数 III</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">longestOnes</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> maxv = INT32_MIN;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            cnt += nums[right] == <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">while</span> (cnt &gt; k) &#123;<br>                cnt -= nums[left] == <span class="hljs-number">0</span>;<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-2024.考试的最大困扰度</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-2024/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-2024/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/maximize-the-confusion-of-an-exam/description/">2024. 考试的最大困扰度</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxConsecutiveAnswers</span><span class="hljs-params">(string answerKey, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-comment">// cnt[0]记录如果将T改为F时，&#x27;F&#x27;连续数目</span><br>        <span class="hljs-comment">// cnt[1]记录如果将F改为T时，&#x27;T&#x27;连续数目</span><br>        vector&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">cnt</span>(<span class="hljs-number">2</span>);<br>        <span class="hljs-comment">// leftT代表将T改为F情况下的，left坐标</span><br>        <span class="hljs-type">int</span> leftT = <span class="hljs-number">0</span>, leftF = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// maxvT代表将T改为F情况下,最大F连续数目</span><br>        <span class="hljs-type">int</span> maxvT = <span class="hljs-number">-1</span>, maxvF = <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; answerKey.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            cnt[<span class="hljs-number">0</span>] += answerKey[right] == <span class="hljs-string">&#x27;T&#x27;</span>;<br>            cnt[<span class="hljs-number">1</span>] += answerKey[right] == <span class="hljs-string">&#x27;F&#x27;</span>;<br>            <span class="hljs-keyword">while</span> (cnt[<span class="hljs-number">0</span>] &gt; k) &#123;<br>                cnt[<span class="hljs-number">0</span>] -= answerKey[leftT] == <span class="hljs-string">&#x27;T&#x27;</span>;<br>                leftT ++;<br>            &#125;<br>            maxvT = <span class="hljs-built_in">max</span>(maxvT, right - leftT + <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">while</span> (cnt[<span class="hljs-number">1</span>] &gt; k) &#123;<br>                cnt[<span class="hljs-number">1</span>] -= answerKey[leftF] == <span class="hljs-string">&#x27;F&#x27;</span>;<br>                leftF ++;<br>            &#125;<br>            maxvF = <span class="hljs-built_in">max</span>(maxvF, right - leftF + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(maxvT, maxvF);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-2958.最多 K 个重复元素的最长子数组</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-2958/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-2958/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/length-of-longest-subarray-with-at-most-k-frequency/description/">2958. 最多 K 个重复元素的最长子数组</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSubarrayLength</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[nums[right]] ++;<br>            <span class="hljs-keyword">while</span> (map[nums[right]] &gt; k) &#123;<br>                map[nums[left]]--;<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-1695.删除子数组的最大得分</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-1695/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-1695/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/maximum-erasure-value/description/">1695. 删除子数组的最大得分</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maximumUniqueSubarray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; map;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> maxv = INT32_MIN, sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[nums[right]] ++;<br>            sum += nums[right];<br>            <span class="hljs-keyword">while</span> (map[nums[right]] &gt; <span class="hljs-number">1</span>) &#123;<br>                sum -= nums[left];<br>                map[nums[left]] --;<br>                <span class="hljs-keyword">if</span> (map[nums[left]] == <span class="hljs-number">0</span>) &#123;<br>                    map.<span class="hljs-built_in">erase</span>(nums[left]);<br>                &#125;<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, sum);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-904.水果成篮</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-904/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-904/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/fruit-into-baskets/description/">904. 水果成篮</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">totalFruit</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; fruits)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; fruits.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[fruits[right]] ++;<br>            <span class="hljs-keyword">while</span> (map.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">2</span>) &#123;<br>                map[fruits[left]] --;<br>                <span class="hljs-keyword">if</span> (map[fruits[left]] == <span class="hljs-number">0</span>) &#123;<br>                    map.<span class="hljs-built_in">erase</span>(fruits[left]);<br>                &#125;<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-1208.尽可能使字符串相等</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-1208/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-1208/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/get-equal-substrings-within-budget/description/">1208. 尽可能使字符串相等</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">equalSubstring</span><span class="hljs-params">(string s, string t, <span class="hljs-type">int</span> maxCost)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n = s.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; n; right ++) &#123;<br>            sum += <span class="hljs-built_in">abs</span>(s[right] - t[right]);<br>            <span class="hljs-keyword">while</span> (sum &gt; maxCost) &#123;<br>                sum -= <span class="hljs-built_in">abs</span>(s[left] - t[left]);<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-1493.删掉一个元素以后全为 1 的最长子数组</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-1493/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-1493/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/longest-subarray-of-1s-after-deleting-one-element/description/">1493. 删掉一个元素以后全为 1 的最长子数组</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">longestSubarray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            cnt += nums[right] == <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">while</span> (cnt &gt; <span class="hljs-number">1</span>) &#123;<br>                <span class="hljs-comment">// 判断是否存在一个最多有1个0的滑动窗口</span><br>                cnt -= nums[left] == <span class="hljs-number">0</span>;<br>                left ++;<br>            &#125;<br>            <span class="hljs-comment">// 滑动窗口总长度是 right-left+1,但是这里面最多有一个0,所以要减去1，维持只包含1的子数组</span><br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-3090.每个字符最多出现两次的最长子字符串</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-3090/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-3090/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/maximum-length-substring-with-two-occurrences/description/">3090. 每个字符最多出现两次的最长子字符串</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maximumLengthSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[s[right] - <span class="hljs-string">&#x27;a&#x27;</span>] ++;<br>            <span class="hljs-keyword">while</span> (map[s[right] - <span class="hljs-string">&#x27;a&#x27;</span>] &gt; <span class="hljs-number">2</span>) &#123;<br>                map[s[left] - <span class="hljs-string">&#x27;a&#x27;</span>]--;<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>LeetCode-3.无重复字符的最长子串</title>
+    <link href="/2025/04/09/LeetCode/Solution/LeetCode-3/"/>
+    <url>/2025/04/09/LeetCode/Solution/LeetCode-3/</url>
+    
+    <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/">3. 无重复字符的最长子串</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">lengthOfLongestSubstring</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            map[s[right] - <span class="hljs-string">&#x27;a&#x27;</span>] ++;<br>            <span class="hljs-keyword">while</span> (map[s[right] - <span class="hljs-string">&#x27;a&#x27;</span>] &gt; <span class="hljs-number">1</span>) &#123;<br>                map[s[left] - <span class="hljs-string">&#x27;a&#x27;</span>] --;<br>                left ++;<br>            &#125;<br>            maxv = <span class="hljs-built_in">max</span>(maxv, right - left + <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv == INT32_MIN ? <span class="hljs-number">0</span> : maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LeetCode-1052.爱生气的书店老板</title>
     <link href="/2025/04/08/LeetCode/Solution/LeetCode-1052/"/>
     <url>/2025/04/08/LeetCode/Solution/LeetCode-1052/</url>
@@ -11,10 +602,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><a href="https://leetcode.cn/problems/grumpy-bookstore-owner/">1052. 爱生气的书店老板</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxSatisfied</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; customers, vector&lt;<span class="hljs-type">int</span>&gt;&amp; grumpy, <span class="hljs-type">int</span> minutes)</span> </span>&#123;<br>        <span class="hljs-comment">// cnt[0] 记录不生气时的顾客数，cnt[1]记录生气时的顾客数</span><br>        vector&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">cnt</span>(<span class="hljs-number">2</span>);<br>        <span class="hljs-type">int</span> n = customers.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; n; right ++) &#123;<br>            cnt[grumpy[right]] += customers[right];<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &gt;= minutes) &#123;<br>                maxv = <span class="hljs-built_in">max</span>(maxv, cnt[<span class="hljs-number">1</span>]);<br>                cnt[<span class="hljs-number">1</span>] -= grumpy[left] == <span class="hljs-number">1</span> ? customers[left] : <span class="hljs-number">0</span>;<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv + cnt[<span class="hljs-number">0</span>];<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -30,10 +631,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/description/">1423. 可获得的最大点数</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxScore</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; cardPoints, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> allSum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i : cardPoints) &#123;<br>            allSum += i;<br>        &#125;<br>        <span class="hljs-type">int</span> n = cardPoints.<span class="hljs-built_in">size</span>(), m = n - k;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, sum = <span class="hljs-number">0</span>, minv = INT32_MAX;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; n; right ++) &#123;<br>            sum += cardPoints[right];<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> == m) &#123;<br>                minv = <span class="hljs-built_in">min</span>(minv, sum);<br>                sum -= cardPoints[left];<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (minv == INT32_MAX) &#123;<br>            <span class="hljs-keyword">return</span> sum;<br>        &#125;<br>        <span class="hljs-keyword">return</span> allSum - minv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>不定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>不定长滑动窗口</tag>
       
     </tags>
     
@@ -49,10 +660,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/maximum-sum-of-distinct-subarrays-with-length-k/description/">2461. 长度为 K 子数组中的最大和</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">maximumSubarraySum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> sum = <span class="hljs-number">0</span>, maxv = <span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += nums[right];<br>            map[nums[right]] ++;<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &gt;= k) &#123;<br>                <span class="hljs-keyword">if</span> (map.<span class="hljs-built_in">size</span>() == k) &#123;<br>                    <span class="hljs-keyword">if</span> (sum &gt; maxv) &#123;<br>                        maxv = sum;<br>                    &#125;<br>                &#125;<br>                sum -= nums[left];<br>                map[nums[left]] --;<br>                <span class="hljs-keyword">if</span> (map[nums[left]] == <span class="hljs-number">0</span>) &#123;<br>                    map.<span class="hljs-built_in">erase</span>(nums[left]);<br>                &#125;<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv == <span class="hljs-number">-1</span> ? <span class="hljs-number">0</span> : maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -68,10 +689,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/maximum-sum-of-almost-unique-subarray/description/">2841. 几乎唯一子数组的最大和</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-title">maxSum</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> m, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> sum = <span class="hljs-number">0</span>, maxv = <span class="hljs-number">-1</span>;<br>        unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt;map;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += nums[right];<br>            map[nums[right]] ++;<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &gt;= k) &#123;<br>                <span class="hljs-keyword">if</span> (map.<span class="hljs-built_in">size</span>() &gt;= m) &#123;<br>                    <span class="hljs-keyword">if</span> (sum &gt; maxv) &#123;<br>                        maxv = sum;<br>                    &#125;<br>                &#125;<br>                sum -= nums[left];<br>                map[nums[left]] --;<br>                <span class="hljs-keyword">if</span> (map[nums[left]] == <span class="hljs-number">0</span>) &#123;<br>                    map.<span class="hljs-built_in">erase</span>(nums[left]);<br>                &#125;<br><br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv == <span class="hljs-number">-1</span> ? <span class="hljs-number">0</span> : maxv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -87,10 +718,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/minimum-recolors-to-get-k-consecutive-black-blocks/description/">2379. 得到 K 个黑块的最少涂色次数</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minimumRecolors</span><span class="hljs-params">(string blocks, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>, minv = INT32_MAX;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; blocks.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += blocks[right] == <span class="hljs-string">&#x27;W&#x27;</span>;<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &gt;= k) &#123;<br>                minv = <span class="hljs-built_in">min</span>(sum, minv);<br>                sum -= blocks[left] == <span class="hljs-string">&#x27;W&#x27;</span>;<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> minv;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -106,10 +747,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/k-radius-subarray-averages/description/">2090. 半径为 k 的子数组平均值</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">getAverages</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        vector&lt;<span class="hljs-type">int</span>&gt;<span class="hljs-built_in">arr</span>(nums.<span class="hljs-built_in">size</span>(), <span class="hljs-number">-1</span>);<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += nums[right];<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &gt;= <span class="hljs-number">2</span> * k + <span class="hljs-number">1</span>) &#123;<br>                arr[(right + left) / <span class="hljs-number">2</span>] = sum / (<span class="hljs-number">2</span> * k + <span class="hljs-number">1</span>); <br>                sum -= nums[left];<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> arr;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -125,10 +776,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/description/">1343. 大小为 K 且平均值大于等于阈值的子数组数目</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">numOfSubarrays</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; arr, <span class="hljs-type">int</span> k, <span class="hljs-type">int</span> threshold)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">long</span> <span class="hljs-type">long</span> sum = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; arr.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += arr[right];<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &gt;= k) &#123;<br>                <span class="hljs-keyword">if</span> (threshold * k &lt;= sum) &#123;<br>                    cnt ++;<br>                &#125;<br>                sum -= arr[left];<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cnt;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -144,10 +805,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/maximum-average-subarray-i/description/">643. 子数组最大平均数 I</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">double</span> <span class="hljs-title">findMaxAverage</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; nums.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            sum += nums[right];<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> &gt;= k) &#123;<br>                maxv = <span class="hljs-built_in">max</span>(maxv, sum);<br>                sum -= nums[left];<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> (<span class="hljs-type">double</span>)maxv / k;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -163,10 +834,20 @@
     <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h2><p><a href="https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/description/">1456. 定长子串中元音的最大数目</a></p><h2 id="1-C-代码"><a href="#1-C-代码" class="headerlink" title="1.C++代码"></a>1.C++代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-type">char</span> a)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (a == <span class="hljs-string">&#x27;a&#x27;</span> || a == <span class="hljs-string">&#x27;e&#x27;</span> || a == <span class="hljs-string">&#x27;i&#x27;</span> || a == <span class="hljs-string">&#x27;o&#x27;</span> || a == <span class="hljs-string">&#x27;u&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">maxVowels</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> cnt = <span class="hljs-number">0</span>, maxv = INT32_MIN;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> right = <span class="hljs-number">0</span>; right &lt; s.<span class="hljs-built_in">size</span>(); right ++) &#123;<br>            cnt += <span class="hljs-built_in">check</span>(s[right]);<br>            <span class="hljs-keyword">if</span> (right - left + <span class="hljs-number">1</span> == k) &#123;<br>                maxv = <span class="hljs-built_in">max</span>(maxv, cnt);<br>                cnt -= <span class="hljs-built_in">check</span>(s[left]);<br>                left ++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> maxv;<br>    &#125;<br>&#125;;<br><br></code></pre></td></tr></table></figure>]]></content>
     
     
+    <categories>
+      
+      <category>滑动窗口</category>
+      
+      <category>定长滑动窗口</category>
+      
+    </categories>
+    
     
     <tags>
       
       <tag>滑动窗口</tag>
+      
+      <tag>定长滑动窗口</tag>
       
     </tags>
     
@@ -179,7 +860,7 @@
     <link href="/2025/03/06/LeetCode/QuestionList/%E7%81%B5%E8%8C%B6%E5%B1%B1%E8%89%BE%E5%BA%9C-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
     <url>/2025/03/06/LeetCode/QuestionList/%E7%81%B5%E8%8C%B6%E5%B1%B1%E8%89%BE%E5%BA%9C-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
     
-    <content type="html"><![CDATA[<h1 id="1-滑动窗口"><a href="#1-滑动窗口" class="headerlink" title="1.滑动窗口"></a>1.滑动窗口</h1><p> 一、定长滑动窗口</p><ul><li>1.1 基础</li></ul><a href="/2025/04/07/LeetCode/Solution/LeetCode-1456/" title="LeetCode-1456.定长字串中元音的最大数目">LeetCode-1456.定长字串中元音的最大数目</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-643/" title="LeetCode-643.子数组最大平均数 I">LeetCode-643.子数组最大平均数 I</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-1343/" title="LeetCode-1343.大小为 K 且平均值大于等于阈值的子数组数目">LeetCode-1343.大小为 K 且平均值大于等于阈值的子数组数目</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2090/" title="LeetCode-2090.半径为 k 的子数组平均值">LeetCode-2090.半径为 k 的子数组平均值</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2379/" title="LeetCode-2379.得到 K 个黑块的最少涂色次数">LeetCode-2379.得到 K 个黑块的最少涂色次数</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2841/" title="LeetCode-2841.几乎唯一子数组的最大和">LeetCode-2841.几乎唯一子数组的最大和</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2461/" title="LeetCode-2461.长度为 K 子数组中的最大和">LeetCode-2461.长度为 K 子数组中的最大和</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-1423/" title="LeetCode-1423.可获得的最大点数">LeetCode-1423.可获得的最大点数</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-1052/" title="LeetCode-1052.爱生气的书店老板">LeetCode-1052.爱生气的书店老板</a><br>待完成(LeetCode-1652)<br><ul><li>1.2进阶</li></ul><p>待完成(LeetCode-3439)<br><br><br>待完成(LeetCode-2134)<br><br><br>待完成(LeetCode-1297)<br><br><br>待完成(LeetCode-2653)<br><br><br>待完成(LeetCode-1888)<br><br><br>待完成(LeetCode-567)<br><br><br>待完成(LeetCode-438)<br><br><br>待完成(LeetCode-30)<br><br><br>待完成(LeetCode-2156)<br><br><br>待完成(LeetCode-2953)<br><br><br>待完成(LeetCode-1016)</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-滑动窗口"><a href="#1-滑动窗口" class="headerlink" title="1.滑动窗口"></a>1.滑动窗口</h1><p> 一、定长滑动窗口</p><ul><li>1.1 基础</li></ul> <br><a href="/2025/04/07/LeetCode/Solution/LeetCode-1456/" title="LeetCode-1456.定长字串中元音的最大数目">LeetCode-1456.定长字串中元音的最大数目</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-643/" title="LeetCode-643.子数组最大平均数 I">LeetCode-643.子数组最大平均数 I</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-1343/" title="LeetCode-1343.大小为 K 且平均值大于等于阈值的子数组数目">LeetCode-1343.大小为 K 且平均值大于等于阈值的子数组数目</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2090/" title="LeetCode-2090.半径为 k 的子数组平均值">LeetCode-2090.半径为 k 的子数组平均值</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2379/" title="LeetCode-2379.得到 K 个黑块的最少涂色次数">LeetCode-2379.得到 K 个黑块的最少涂色次数</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2841/" title="LeetCode-2841.几乎唯一子数组的最大和">LeetCode-2841.几乎唯一子数组的最大和</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-2461/" title="LeetCode-2461.长度为 K 子数组中的最大和">LeetCode-2461.长度为 K 子数组中的最大和</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-1423/" title="LeetCode-1423.可获得的最大点数">LeetCode-1423.可获得的最大点数</a><br><a href="/2025/04/08/LeetCode/Solution/LeetCode-1052/" title="LeetCode-1052.爱生气的书店老板">LeetCode-1052.爱生气的书店老板</a><br>待完成(LeetCode-1652)<br><ul><li>1.2进阶</li></ul><br>待完成(LeetCode-3439)<br>待完成(LeetCode-2134)<br>待完成(LeetCode-1297)<br>待完成(LeetCode-2653)<br>待完成(LeetCode-1888)<br>待完成(LeetCode-567)<br>待完成(LeetCode-438)<br>待完成(LeetCode-30)<br>待完成(LeetCode-2156)<br>待完成(LeetCode-2953)<br>待完成(LeetCode-1016)<br><ul><li>1.3其他</li></ul><br>待完成(LeetCode-2269)<br>待完成(LeetCode-1984)<br>待完成(LeetCode-1461)<br>待完成(LeetCode-220)<br>--- 二、不定长滑动窗口* 2.1 求最长/最大<br>一般题目都有「至多」的要求。<ul><li>2.1.1 基础</li></ul>]]></content>
     
     
     
