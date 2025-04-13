@@ -76,7 +76,11 @@
 
 
   
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -229,15 +233,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/09/LeetCode-LCP-68/" target="_self">
-          LeetCode-LCP-68.美观的花束
+        <a href="/2025/04/12/LeetCode/Solution/LeetCode-15/" target="_self">
+          LeetCode-15.三数之和
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-LCP-68/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/LeetCode/Solution/LeetCode-15/" target="_self">
         <div>
-          问题LCP 68. 美观的花束 1.C++代码1234567891011121314151617181920class Solution &#123;public:    const static int MOD = 1000000007;    int beautifulBouquet(vector&lt;int&gt;&amp; flowers, int cnt) &#123;
+          问题 15. 三数之和  提示 重点在于 固定住了 nums[i]，然后在[left,right]区域内利用双指针进行判断。  1.C++代码 1.双指针未优化版本 1234567891011121314151617181920212223242526272829303132class Solution &#123;public:    vector&lt;vector&lt;int&gt;&g
         </div>
       </a>
 
@@ -245,8 +249,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 17:06" pubdate>
-              2025-04-09
+            <time datetime="2025-04-12 16:29" pubdate>
+              2025-04-12
             </time>
           </div>
         
@@ -261,83 +265,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/09/LeetCode-2302/" target="_self">
-          LeetCode-2302.统计得分小于 K 的子数组数目
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-2302/" target="_self">
-        <div>
-          问题2302. 统计得分小于 K 的子数组数目 提示这里for循环遍历时，永远是按照以right为右端点时，可得到的子数组数量大小while(sum*len &gt;= k)代码块结束后ans += (right - left + 1)是代表[left, right]这个区间内以right为右端点，left为左端点的数组里求 满足条件的子数组由于此时[left, right]*(right - l
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 16:03" pubdate>
-              2025-04-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
   
+  
+
   
 
   
@@ -353,9 +294,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
             
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
             
           </div>
         
@@ -369,15 +310,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/09/LeetCode-3258/" target="_self">
-          LeetCode-3258.统计满足 K 约束的子字符串数量 I
+        <a href="/2025/04/12/LeetCode/Solution/LeetCode-LCP-28/" target="_self">
+          LeetCode-LCP-28. 采购方案
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-3258/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/LeetCode/Solution/LeetCode-LCP-28/" target="_self">
         <div>
-          问题3258. 统计满足 K 约束的子字符串数量 I 1.C++代码12345678910111213141516class Solution &#123;public:    int countKConstraintSubstrings(string s, int k) &#123;        int left = 0, ans = 0;        vector&lt;int&gt;vt
+          问题 LCP 28. 采购方案  1.C++代码 123456789101112131415161718class Solution &#123;public:    const static int MOD = 1e9 + 7;    int purchasePlans(vector&lt;int&gt;&amp; nums, int target) &#123;        ranges:
         </div>
       </a>
 
@@ -385,8 +326,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 15:56" pubdate>
-              2025-04-09
+            <time datetime="2025-04-12 16:02" pubdate>
+              2025-04-12
             </time>
           </div>
         
@@ -401,83 +342,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/09/LeetCode-713/" target="_self">
-          LeetCode-713.乘积小于 K 的子数组
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-713/" target="_self">
-        <div>
-          问题713. 乘积小于 K 的子数组 1.C++代码1234567891011121314151617class Solution &#123;public:    int numSubarrayProductLessThanK(vector&lt;int&gt;&amp; nums, int k) &#123;        int left = 0;        long long sum
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 15:48" pubdate>
-              2025-04-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
   
+  
+
   
 
   
@@ -493,9 +371,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
             
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
             
           </div>
         
@@ -509,15 +387,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/09/LeetCode-2799/" target="_self">
-          LeetCode-2799.统计完全子数组的数目
+        <a href="/2025/04/12/LeetCode/Solution/LeetCode-2824/" target="_self">
+          LeetCode-2824.统计和小于目标的下标对数目
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-2799/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/LeetCode/Solution/LeetCode-2824/" target="_self">
         <div>
-          问题2799. 统计完全子数组的数目 1.C++代码123456789101112131415161718192021222324class Solution &#123;public:    int countCompleteSubarrays(vector&lt;int&gt;&amp; nums) &#123;        set&lt;int&gt;st;        for (int
+          问题 2824. 统计和小于目标的下标对数目  提示 这里cnt+=right - left 表示以nums[left]为左端点，其右端点为left + 1, left + 2 ... right - 1, right的点，相加的和都小于target时的数组对一共是多少。 left+1 ~ right的长度是 right - (left + 1) + 1 = right - left。  1.C
         </div>
       </a>
 
@@ -525,8 +403,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 14:54" pubdate>
-              2025-04-09
+            <time datetime="2025-04-12 15:56" pubdate>
+              2025-04-12
             </time>
           </div>
         
@@ -541,116 +419,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/09/LeetCode-3325/" target="_self">
-          LeetCode-3325.字符至少出现 K 次的子字符串 I
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-3325/" target="_self">
-        <div>
-          问题3325. 字符至少出现 K 次的子字符串 I 1.C++代码1234567891011121314151617class Solution &#123;public:    int numberOfSubstrings(string s, int k) &#123;        int left = 0;        unordered_map&lt;int, int&gt;map;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 14:37" pubdate>
-              2025-04-09
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/09/LeetCode-2962/" target="_self">
-          LeetCode-2962.统计最大元素出现至少 K 次的子数组
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-2962/" target="_self">
-        <div>
-          问题2962. 统计最大元素出现至少 K 次的子数组 提示cnt记录[left,right]中出现maxv的次数当cnt == k时候,让left向右走直到[left + x, right]中的cnt &lt; k。而此时将左端点作为 0...left + x - 1都会使得[左端点, right]这个区间的cnt == kleft + x - 1 距离0点的长度是 left + x - 1 +
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 14:26" pubdate>
-              2025-04-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
   
+  
+
   
 
   
@@ -666,9 +448,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
             
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
             
           </div>
         
@@ -682,15 +464,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/09/LeetCode-1358/" target="_self">
-          LeetCode-1358.包含所有三种字符的子字符串数目
+        <a href="/2025/04/12/LeetCode/Solution/LeetCode-633/" target="_self">
+          LeetCode-633.平方数之和
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-1358/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/LeetCode/Solution/LeetCode-633/" target="_self">
         <div>
-          问题1358. 包含所有三种字符的子字符串数目 1.C++代码123456789101112131415161718192021class Solution &#123;public:    int numberOfSubstrings(string s) &#123;        unordered_map&lt;int, int&gt;map;        int left = 0;
+          问题 633. 平方数之和  提示 这里进行判断时，使用的是left * left &lt; c - right * right 如果使用left * left + right * right &lt; c这样来判断的话，可能会爆int  1.C++代码 12345678910111213141516class Solution &#123;public:    bool judgeSquare
         </div>
       </a>
 
@@ -698,8 +480,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 14:20" pubdate>
-              2025-04-09
+            <time datetime="2025-04-12 15:45" pubdate>
+              2025-04-12
             </time>
           </div>
         
@@ -714,76 +496,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
-            
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2025/04/09/LeetCode-2904/" target="_self">
-          LeetCode-2904.最短且字典序最小的美丽子字符串
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode-2904/" target="_self">
-        <div>
-          问题2904. 最短且字典序最小的美丽子字符串 1.C++代码12345678910111213141516171819202122232425262728293031323334class Solution &#123;public:    // 去除前导0    string deletePrefixZero (string str) &#123;        int i = 0;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 13:55" pubdate>
-              2025-04-09
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
+  
+  
+
   
 
   
@@ -799,9 +525,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
             
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
             
           </div>
         
@@ -815,15 +541,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2025/04/09/LeetCode/Solution/LeetCode-209/" target="_self">
-          LeetCode-209.长度最小的子数组
+        <a href="/2025/04/12/LeetCode/Solution/LeetCode-167/" target="_self">
+          LeetCode-167.两数之和 II - 输入有序数组
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/09/LeetCode/Solution/LeetCode-209/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/LeetCode/Solution/LeetCode-167/" target="_self">
         <div>
-          问题209. 长度最小的子数组 1.C++代码12345678910111213141516class Solution &#123;public:    int minSubArrayLen(int target, vector&lt;int&gt;&amp; nums) &#123;        int left = 0;        int sum = 0, minv = INT32_M
+          问题 167. 两数之和 II - 输入有序数组  1.C++代码 12345678910111213141516171819class Solution &#123;public:    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;        int left = 0, right =
         </div>
       </a>
 
@@ -831,8 +557,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2025-04-09 11:26" pubdate>
-              2025-04-09
+            <time datetime="2025-04-12 15:35" pubdate>
+              2025-04-12
             </time>
           </div>
         
@@ -847,13 +573,20 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="category-chain-item">不定长滑动窗口</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
+  
+  
+
   
 
   
@@ -869,9 +602,394 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#滑动窗口</a>
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
             
-              <a href="/tags/%E4%B8%8D%E5%AE%9A%E9%95%BF%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">#不定长滑动窗口</a>
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/12/LeetCode/Solution/LeetCode-1471/" target="_self">
+          LeetCode-1471.数组中的 k 个最强值
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/LeetCode/Solution/LeetCode-1471/" target="_self">
+        <div>
+          问题 1471. 数组中的 k 个最强值  提示 这里的ranges::sort(arr)是c++ 20的新特性,效果和sort(arr.begin(),arr.end())一样。 详情可以参考Ranges library (since C++20) 获取更多关于ranges的用法  1.C++代码 1234567891011121314151617181920212223class Solut
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-12 15:27" pubdate>
+              2025-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+            
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/12/LeetCode/Solution/LeetCode-658/" target="_self">
+          LeetCode-658.找到 K 个最接近的元素
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/12/LeetCode/Solution/LeetCode-658/" target="_self">
+        <div>
+          问题 658. 找到 K 个最接近的元素  提示 尝试去维护一个长度不能大于k的滑动窗口，这个滑动窗口内的数据都是最贴近x值的。  1.C++代码 12345678910111213141516class Solution &#123;public:    vector&lt;int&gt; findClosestElements(vector&lt;int&gt;&amp; arr, int
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-12 15:07" pubdate>
+              2025-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+            
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/10/LeetCode/Solution/LeetCode-977/" target="_self">
+          LeetCode-977.有序数组的平方
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/10/LeetCode/Solution/LeetCode-977/" target="_self">
+        <div>
+          问题 977. 有序数组的平方  提示 题目中给出的nums数组是 非递减顺序数组 即从 最左/右端 开始的数据，其绝对值是比其 相邻右/左边 的绝对值是要大的  1.C++代码 12345678910111213141516171819202122class Solution &#123;public:    vector&lt;int&gt; sortedSquares(vector&lt;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-10 15:05" pubdate>
+              2025-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+            
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/10/LeetCode/Solution/LeetCode-2105/" target="_self">
+          LeetCode-2105.给植物浇水 II
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/10/LeetCode/Solution/LeetCode-2105/" target="_self">
+        <div>
+          问题 2105. 给植物浇水 II  提示 题目中有一个数据条件很重要 max(plants[i])&lt;=capacityA,capacityB&lt;=109max(plants[i]) &lt;= capacityA, capacityB &lt;= 10^9 max(plants[i])&lt;=capacityA,capacityB&lt;=109 这意味着capacityA/B 永
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-10 14:24" pubdate>
+              2025-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+            
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/04/10/LeetCode/Solution/LeetCode-1750/" target="_self">
+          LeetCode-1750.删除字符串两端相同字符后的最短长度
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/04/10/LeetCode/Solution/LeetCode-1750/" target="_self">
+        <div>
+          问题 1750. 删除字符串两端相同字符后的最短长度  提示 主要是理解这两句话 选择字符串 s 一个 非空 的前缀，这个前缀的所有字符都相同。 选择字符串 s 一个 非空 的后缀，这个后缀的所有字符都相同。 即要选择要删除的字符，这个字符在left端，right端都要删除  1.C++代码 1234567891011121314151617class Solution &#123;public
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-04-10 14:20" pubdate>
+              2025-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">双指针</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/" class="category-chain-item">单序列双指针</a>
+  
+  
+
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">#双指针</a>
+            
+              <a href="/tags/%E5%8D%95%E5%BA%8F%E5%88%97%E5%8F%8C%E6%8C%87%E9%92%88/">#单序列双指针</a>
             
           </div>
         
@@ -883,7 +1001,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
